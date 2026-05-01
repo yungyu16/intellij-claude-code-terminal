@@ -1,0 +1,26 @@
+<idea-plugin>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.terminal</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Claude Code Terminal" displayType="BALLOON" isLogByDefault="true"/>
+        <applicationService
+                serviceImplementation="io.github.yungyu16.claudecodeterminal.ClaudeTerminalSettings"/>
+        <applicationConfigurable
+                parentId="tools"
+                id="io.github.yungyu16.claude-code-terminal-tab.settings"
+                displayName="Claude Code Terminal Tab"
+                instance="io.github.yungyu16.claudecodeterminal.ClaudeTerminalSettingsConfigurable"/>
+    </extensions>
+
+    <actions>
+        <action id="io.github.yungyu16.claude-code-terminal-tab.action.OpenClaude"
+                class="io.github.yungyu16.claudecodeterminal.ClaudeTerminalAction"
+                text="Open Claude Code Terminal Tab"
+                description="聚焦已有 Claude Code 终端标签页，不存在则自动新建（每次新建均为全新对话）"
+                icon="/icons/claude.svg">
+            <add-to-group group-id="MainToolbarLeft" anchor="last"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
