@@ -28,18 +28,6 @@ intellijPlatform {
         version = project.version.toString()
 
         description = """
-            <p>一键在 JetBrains IDE 内置 Terminal 中打开 Claude Code，支持进程存活检测、自动重建和全屏渲染。</p>
-            <br/>
-            <p><b>功能</b></p>
-            <ul>
-                <li>点击 Toolbar 按钮，自动聚焦 <b>Claude Code</b> Terminal tab；已激活则隐藏，未激活则聚焦。</li>
-                <li>若 tab 不存在，自动新建并执行启动命令（默认 <code>claude</code>）。</li>
-                <li>进程存活检测：tab 已创建但 Claude 进程已退出时，自动关闭旧 tab 并重建。</li>
-                <li>防并发：连续快速点击不会重复创建多个 tab。</li>
-                <li>可选全屏渲染：消除闪烁、长对话内存稳定，同时保留终端原生选择与搜索。</li>
-                <li>可在 <b>Settings → Tools → Claude Code 终端</b> 中自定义命令、模型、verbose、追加参数等。</li>
-            </ul>
-            <br/>
             <p>Open Claude Code in JetBrains IDE's built-in Terminal with a single click.</p>
             <br/>
             <p><b>Features</b></p>
@@ -50,6 +38,18 @@ intellijPlatform {
                 <li>Concurrent-click safe — rapid clicks never create duplicate tabs.</li>
                 <li>Optional fullscreen rendering: eliminates flickering, stabilizes memory for long conversations.</li>
                 <li>Customize command, model, verbose mode, extra args, and more in <b>Settings → Tools → Claude Code 终端</b>.</li>
+            </ul>
+            <br/>
+            <p>一键在 JetBrains IDE 内置 Terminal 中打开 Claude Code，支持进程存活检测、自动重建和全屏渲染。</p>
+            <br/>
+            <p><b>功能</b></p>
+            <ul>
+                <li>点击 Toolbar 按钮，自动聚焦 <b>Claude Code</b> Terminal tab；已激活则隐藏，未激活则聚焦。</li>
+                <li>若 tab 不存在，自动新建并执行启动命令（默认 <code>claude</code>）。</li>
+                <li>进程存活检测：tab 已创建但 Claude 进程已退出时，自动关闭旧 tab 并重建。</li>
+                <li>防并发：连续快速点击不会重复创建多个 tab。</li>
+                <li>可选全屏渲染：消除闪烁、长对话内存稳定，同时保留终端原生选择与搜索。</li>
+                <li>可在 <b>Settings → Tools → Claude Code 终端</b> 中自定义命令、模型、verbose、追加参数等。</li>
             </ul>
         """.trimIndent()
 
