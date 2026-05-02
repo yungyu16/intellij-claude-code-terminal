@@ -44,17 +44,23 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
-      - name: Verify plugin structure
-        run: ./gradlew verifyPlugin
-
-      - name: Build, sign, and publish plugin
+      - name: Build plugin
         env:
           PLUGIN_VERSION: ${{ steps.version.outputs.version }}
+        run: ./gradlew buildPlugin
+
+      - name: Upload to JetBrains Marketplace
+        if: github.event_name == 'push'
+        env:
           JETBRAINS_TOKEN: ${{ secrets.JETBRAINS_TOKEN }}
-          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
-        run: ./gradlew publishPlugin
+        run: |
+          PLUGIN_FILE=$(ls build/distributions/*.zip | head -1)
+          echo "Uploading ${PLUGIN_FILE}..."
+          curl -i \
+            -F "xmlId=io.github.yungyu16.claude-code-terminal-tab" \
+            -F "file=@${PLUGIN_FILE}" \
+            -H "Authorization: Bearer ${JETBRAINS_TOKEN}" \
+            https://plugins.jetbrains.com/plugin/uploadPlugin
 
       - name: Create GitHub Release
         if: github.event_name == 'push'

@@ -68,18 +68,6 @@ intellijPlatform {
         }
     }
 
-    // 发布到 JetBrains Marketplace（仅在 CI 中通过环境变量提供认证）
-    publishing {
-        token = System.getenv("JETBRAINS_TOKEN") ?: ""
-    }
-
-    // 插件签名（仅在 CI 中通过环境变量提供密钥）
-    // 若密钥未配置，signPlugin 任务自动跳过，不影响本地构建
-    signing {
-        certificateChain = System.getenv("CERTIFICATE_CHAIN") ?: ""
-        privateKey = System.getenv("PRIVATE_KEY") ?: ""
-        password = System.getenv("PRIVATE_KEY_PASSWORD") ?: ""
-    }
 }
 
 kotlin {
