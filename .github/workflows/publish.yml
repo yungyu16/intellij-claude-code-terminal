@@ -56,7 +56,7 @@ jobs:
         run: |
           PLUGIN_FILE=$(ls build/distributions/*.zip | head -1)
           echo "Uploading ${PLUGIN_FILE}..."
-          curl -i \
+          curl --fail-with-body -i \
             -F "xmlId=io.github.yungyu16.claude-code-terminal-tab" \
             -F "file=@${PLUGIN_FILE}" \
             -H "Authorization: Bearer ${JETBRAINS_TOKEN}" \
