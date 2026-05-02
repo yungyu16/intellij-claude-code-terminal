@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      plugin-version:
+        description: 'Plugin version (e.g. 1.2.3)'
+        required: true
+        type: string
 
 jobs:
   publish:
@@ -22,13 +27,19 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Derive version from tag
+      - name: Derive version
         id: version
         run: |
-          TAG="${GITHUB_REF_NAME}"          # e.g. v1.2.3
-          VERSION="${TAG#v}"                # strip leading 'v' → 1.2.3
-          echo "tag=$TAG"       >> "$GITHUB_OUTPUT"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            VERSION="${{ github.event.inputs.plugin-version }}"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+            echo "tag=v$VERSION"     >> "$GITHUB_OUTPUT"
+          else
+            TAG="${GITHUB_REF_NAME}"          # e.g. v1.2.3
+            VERSION="${TAG#v}"                # strip leading 'v' → 1.2.3
+            echo "tag=$TAG"       >> "$GITHUB_OUTPUT"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
