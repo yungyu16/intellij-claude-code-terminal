@@ -25,7 +25,7 @@ class ClaudeTerminalSettings : PersistentStateComponent<ClaudeTerminalSettings.S
     data class State(
         var commandName: String = "",
         var model: String = "",
-        var fullscreenRendering: Boolean = true,
+        var fullscreenRendering: Boolean = false,
         var verbose: Boolean = false,
         var skipPermissions: Boolean = false,
         var extraArgs: String = ""
@@ -41,27 +41,39 @@ class ClaudeTerminalSettings : PersistentStateComponent<ClaudeTerminalSettings.S
 
     var commandName: String
         get() = myState.commandName.ifBlank { DEFAULT_COMMAND }
-        set(value) { myState.commandName = value.trim() }
+        set(value) {
+            myState.commandName = value.trim()
+        }
 
     var model: String
         get() = myState.model.trim()
-        set(value) { myState.model = value.trim() }
+        set(value) {
+            myState.model = value.trim()
+        }
 
     var fullscreenRendering: Boolean
         get() = myState.fullscreenRendering
-        set(value) { myState.fullscreenRendering = value }
+        set(value) {
+            myState.fullscreenRendering = value
+        }
 
     var verbose: Boolean
         get() = myState.verbose
-        set(value) { myState.verbose = value }
+        set(value) {
+            myState.verbose = value
+        }
 
     var skipPermissions: Boolean
         get() = myState.skipPermissions
-        set(value) { myState.skipPermissions = value }
+        set(value) {
+            myState.skipPermissions = value
+        }
 
     var extraArgs: String
         get() = myState.extraArgs.trim()
-        set(value) { myState.extraArgs = value.trim() }
+        set(value) {
+            myState.extraArgs = value.trim()
+        }
 
     /** 构造完整的 Claude Code 启动命令。
      *

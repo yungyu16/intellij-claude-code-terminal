@@ -21,7 +21,7 @@
 
 在 IDE **Settings → Plugins → Marketplace** 搜索 "Claude Code Terminal Tab" 安装。
 
-[→ JetBrains Marketplace](https://plugins.jetbrains.com/plugin/io.github.yungyu16.claude-code-terminal-tab)
+[→ JetBrains Marketplace](https://plugins.jetbrains.com/plugin/31453-claude-code-terminal-tab)
 
 ### 方式二：手动安装
 
@@ -46,7 +46,7 @@
 |--------|------|--------|
 | 启动命令 | Claude Code CLI 路径 | `claude` |
 | 模型 (--model) | 模型别名 | 账户默认 |
-| 启用全屏渲染 | 备用屏幕缓冲区渲染，消除闪烁、稳定内存 | 开启 |
+| 启用全屏渲染 | 备用屏幕缓冲区渲染，消除闪烁、稳定内存 | 关闭 |
 | --verbose | 完整流式输出及 tool call 细节 | 关闭 |
 | --dangerously-skip-permissions | 跳过权限弹窗（仅限隔离沙箱） | 关闭 |
 | 追加参数 | 拼接到命令末尾的额外参数 | （无） |
