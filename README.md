@@ -7,6 +7,17 @@
 
 在 JetBrains IDE 中一键唤起 Claude Code 终端。
 
+## 背景
+
+Claude Code 官方已提供 [Claude Code (Beta)](https://plugins.jetbrains.com/plugin/27310-claude-code-beta-)，核心能力包括：
+
+1. **IDE MCP Server** — 向 Claude Code CLI 暴露 IDE 上下文（当前选中文件、编辑器内容等），让 CLI 能感知 IDE 状态
+2. **快捷打开终端会话** — 在 IDE 内置终端中一键打开或激活 Claude Code 会话
+
+然而该插件长期处于 **Beta** 阶段（当前版本 `0.1.14-beta`），评分仅 **2.5 / 5**（347 人），且已超过五个月未更新。用户反馈集中在：多 Project 窗口下按钮点击无响应、IDE 检测频繁失败（`No available IDEs detected`），相关问题在官方 GitHub issue #22232 / #1232 中积压已久，未见修复。
+
+本插件正是为解决上述终端唤起问题而开发 —— 与官方插件配合使用：官方插件提供 IDE MCP Server，本插件负责终端会话的可靠唤起。
+
 ## 功能
 
 - **一键切换** — 点击工具栏按钮自动切换：tab 不存在则创建、已激活则隐藏、未激活则聚焦。也可通过 **Tools → Open Claude Code Terminal Tab** 触发
